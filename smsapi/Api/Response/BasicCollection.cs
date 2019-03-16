@@ -16,8 +16,10 @@ namespace SMSApi.Api.Response
 		[DataMember(Name = "collection", IsRequired = false)]
 		protected System.Collections.Generic.List<T> collection;
 
-		[Obsolete("use Size instead")]
+#pragma warning disable CS0809
+        [Obsolete("use Size instead")]
 		public override int Count { get { return Size; } }
+#pragma warning restore CS0809 
 
 		public System.Collections.Generic.List<T> Collection
 		{

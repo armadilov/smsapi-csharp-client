@@ -68,6 +68,11 @@ namespace SMSApi.Api.Action
                 collection.Add("details", "1");
             }
 
+            if( AllowDuplicates == true )
+            {
+                collection.Add( "allow_duplicates", "1" );
+            }
+
             if (this.Params != null)
             {
                 for (int i = 0; i < this.Params.Length; i++)
@@ -109,6 +114,7 @@ namespace SMSApi.Api.Action
         private int MaxParts = 0;
         private string[] Params = null;
         private bool Details = true;
+        private bool AllowDuplicates = false;
 
         public SMSSend SetTo(string to)
         {
@@ -235,6 +241,12 @@ namespace SMSApi.Api.Action
         public SMSSend SetTest(bool test = true)
         {
             this.Test = test;
+            return this;
+        }
+
+        public SMSSend SetAllowDuplicates( bool allowDuplicates = false )
+        {
+            this.AllowDuplicates = allowDuplicates;
             return this;
         }
 
